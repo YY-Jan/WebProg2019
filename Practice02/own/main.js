@@ -69,6 +69,14 @@ function change_img() {
         document.getElementsByClassName("next")[0].style.display = "flex";
 }
 
+function add_image_url() {
+    let url = document.getElementsByName('add-image-url')[0].value;
+    if (!url == "") {
+        img_list.push({src: url, type: 1});
+    }
+    document.getElementsByName('add-image-url')[0].value = "";
+}
+
 function preloadImages(array) {
     if (!preloadImages.list) {
         preloadImages.list = [];
