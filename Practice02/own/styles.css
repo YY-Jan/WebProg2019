@@ -41,6 +41,7 @@ body, div.photo-page-view {
     height: calc(100% - 128px);
     z-index: 2;
     margin: 64px 0px;
+    cursor: pointer;
 }
 .navigate-wrapper.prev {
     padding-left: 12px;
@@ -56,13 +57,13 @@ body, div.photo-page-view {
     width: 40px;
 }
 
-.photo-image {
+#photo-image {
     display: flex;
     justify-content: center;
     height: 100%;
     width: 100%;
 }
-.photo-image img {
+#photo-image img {
     max-height: 100%;
     max-width: 100%;
     width: auto;
