@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Viewer</title>
+        <link rel="stylesheet" type="text/css" media="screen" href="styles.css">
+        <script type="text/javascript" src = "main.js"></script>
+    </head>
+    <body>
+        <div class = "image-viewer">
+            <div class = "image-viewer__container">
+                <div class = "image-viewer__title">Image Viewer</div>
+                <div class = "image-viewer__main">
+                    <button class = "image-viewer__button" id = "backward" type = "button" disabled = "true" onclick="changeImg(-1)" > <img src = "images/back.png"> </button>
+                    <div class = "display-container">
+                        <div class = "preview">
+                            <img class = "invisible" id = "left">
+                        </div>
+                        <div class = "image-viewer__display">
+                            <a href = "https://www.pinterest.com/pin/744712488354929958/"><img src = "images/pic1.jpg" id = "display"></a>
+                        </div>
+                        <div class = "preview">
+                            <img src = "images/pic2.jpg" class = "preimages" id = "right">
+                        </div>
+                   </div>
+                   <button class = "image-viewer__button" id = "forward" type="button" onclick="changeImg(1)"> <img src = "images/next.png"></button>
+               </div>
+        </div>
+    </body>
+</html>
