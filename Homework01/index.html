@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>TODO APP in pure JS</title>
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+    <script src="main.js" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+.todo-app__item[data-checked='true'] h1 {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+#todo-list[data-view-mode='active'] li[data-checked='true'] {
+  display: none;
+}
+#todo-list[data-view-mode='completed'] li[data-checked='false'] {
+  display: none;
+}
+    </style>
+  </head>
+  <body onload="init()">
+    <div id="root" class="todo-app__root">
+      <header class="todo-app__header">
+        <h1 class="todo-app__title">todos</h1>
+      </header>
+      <section class="todo-app__main">
+        <input class="todo-app__input" type="text" id="todo-input" placeholder="What needs to be done?">
+        <ul class="todo-app__list", id="todo-list">
+        </ul>
+      </section>
+      <footer class="todo-app__footer">
+        <div class="todo-app__total" id="todo-count">
+          0 left
+        </div>
+        <div class="todo-app__view-buttons">
+          <button onclick="change_view(this)">All</button>
+          <button onclick="change_view(this)">Active</button>
+          <button onclick="change_view(this)">Completed</button>
+        </div>
+        <div class="todo-app__clean" id="todo-clean">
+          <button onclick="clear_completed()">Clear completed</button>
+        </div>
+      </footer>
+    </div>
+  </body>
+</html>
