@@ -11,5 +11,6 @@
 
 - [x]  filter 已完成/未完成項目
 - [x] 一鍵刪除所有已完成項目
-- [ ] 更多 TodoItems 的 properties (如：完成日期，負責人... 等)
-- [ ] 建立 TodoItems 的群組
+- [x] 更多 TodoItems 的 properties (如：完成日期，負責人... 等)
+- [x] 建立 TodoItems 的群組
+  > 可以新增群組的屬性到項目上，只是沒有實際功能

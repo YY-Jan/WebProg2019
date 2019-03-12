@@ -227,3 +227,59 @@ input[type='checkbox'] {
     max-height: 25px;
     right: 17.5px;
 }
+
+/* my styles */
+.todo-app__item[data-checked='true'] h1 {
+    text-decoration: line-through;
+    opacity: 0.5;
+}
+#todo-list[data-view-mode='active'] li[data-checked='true'] {
+    display: none;
+}
+#todo-list[data-view-mode='completed'] li[data-checked='false'] {
+    display: none;
+}
+.todo-app__item h1 {
+    cursor: pointer;
+}
+.todo-app__item h1:hover {
+}
+#dialog-bg {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background: rgba(0, 0, 0,0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+#dialog-main {
+    background-color: white;
+    min-width: 550px;
+    width: 50%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.dialog-item {
+    padding: 0;
+    margin: 10px;
+    display: flex;
+}
+.dialog-item *:nth-child(2n+1) {
+    flex: 1;
+}
+.dialog-item *:nth-child(2n) {
+    flex: 4;
+}
+#dialog-btn {
+    width: 20%;
+    float: right;
+}
+.dialog-item:last-child {
+    display: block;
+}

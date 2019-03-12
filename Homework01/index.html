@@ -6,18 +6,6 @@
     <title>TODO APP in pure JS</title>
     <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
     <script src="main.js" charset="utf-8"></script>
-    <style type="text/css" media="screen">
-.todo-app__item[data-checked='true'] h1 {
-  text-decoration: line-through;
-  opacity: 0.5;
-}
-#todo-list[data-view-mode='active'] li[data-checked='true'] {
-  display: none;
-}
-#todo-list[data-view-mode='completed'] li[data-checked='false'] {
-  display: none;
-}
-    </style>
   </head>
   <body onload="init()">
     <div id="root" class="todo-app__root">
@@ -25,7 +13,7 @@
         <h1 class="todo-app__title">todos</h1>
       </header>
       <section class="todo-app__main">
-        <input class="todo-app__input" type="text" id="todo-input" placeholder="What needs to be done?">
+        <input class="todo-app__input" type="text" id="todo-input" placeholder="What needs to be done?" autofocus="autofocus">
         <ul class="todo-app__list", id="todo-list">
         </ul>
       </section>
@@ -42,6 +30,29 @@
           <button onclick="clear_completed()">Clear completed</button>
         </div>
       </footer>
+    </div>
+    <div id="dialog-bg">
+      <div id="dialog-main">
+        <div class="dialog-item">
+          <span>項目名稱</span>
+          <span id="dialog-name">項目</span>
+        </div>
+        <div class="dialog-item">
+          <label for="date">完成日期</label>
+          <input type="text" name="" id="date" value="">
+        </div>
+        <div class="dialog-item">
+          <label for="person">負責人</label>
+          <input type="text" name="" id="person" value="">
+        </div>
+        <div class="dialog-item">
+          <label for="category">Category</label>
+          <input type="text" name="" id="category" value="">
+        </div>
+        <div class="dialog-item">
+          <button id="dialog-btn" type="submit">確定</button>
+        </div>
+      </div>
     </div>
   </body>
 </html>
