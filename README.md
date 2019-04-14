@@ -15,3 +15,5 @@
 - Practice 04: TODO list in React
 
 - Practice 05: Calculator in React
+
+- Practice 06: Blog with React router
