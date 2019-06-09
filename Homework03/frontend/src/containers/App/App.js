@@ -25,7 +25,8 @@ class App extends Component {
   state = {
     formTitle: '',
     formBody: '',
-    formAuthor: ''
+    formAuthor: '',
+    likePost: ''
   }
 
   handleFormSubmit = e => {

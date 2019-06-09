@@ -23,6 +23,7 @@ const posts = [
     title: 'GraphQL 101',
     body: 'This is how to use GraphQL...',
     published: true,
+    like: 0,
     author: '1'
   },
   {
@@ -30,6 +31,7 @@ const posts = [
     title: 'GraphQL 201',
     body: 'This is an advanced GraphQL post...',
     published: false,
+    like: 0,
     author: '1'
   },
   {
@@ -37,6 +39,7 @@ const posts = [
     title: 'Programming Music',
     body: '',
     published: true,
+    like: 0,
     author: '2'
   }
 ]

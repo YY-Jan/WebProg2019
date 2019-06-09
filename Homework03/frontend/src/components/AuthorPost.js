@@ -11,7 +11,6 @@ class AuthorPost extends Component {
   render() {
     const { className,
       data: {
-        id,
         name,
         posts,
       }} = this.props;
@@ -21,7 +20,9 @@ class AuthorPost extends Component {
     return (
       <Card className={className}>
         <CardHeader style={{cursor: 'pointer'}}
-          onClick={e => this.setState(prev => ({open: !prev.open}))}>{name} ({posts.length})</CardHeader>
+          onClick={e => this.setState(prev => ({open: !prev.open}))}>
+          {name} ({posts.length})
+        </CardHeader>
         <Collapse isOpen={this.state.open}>
           <CardBody>
             {posts_dom}

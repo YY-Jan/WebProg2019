@@ -76,6 +76,7 @@ const Mutation = {
 
     const post = {
       id: uuidv4(),
+      like: 0,
       ...args.data
     }
 
@@ -137,6 +138,10 @@ const Mutation = {
 
     if (typeof data.body === 'string') {
       post.body = data.body
+    }
+
+    if (typeof data.like === true) {
+      post.like += 1
     }
 
     if (typeof data.published === 'boolean') {
