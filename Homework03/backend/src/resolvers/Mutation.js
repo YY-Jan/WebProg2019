@@ -79,6 +79,8 @@ const Mutation = {
       ...args.data
     }
 
+    const user = db.users.filter(user => user.id === args.data.author)[0]
+
     db.posts.unshift(post)
 
     if (args.data.published) {
@@ -86,6 +88,12 @@ const Mutation = {
         post: {
           mutation: 'CREATED',
           data: post
+        }
+      })
+      pubsub.publish('user', {
+        user: {
+          mutation: 'UPDATED',
+          data: user
         }
       })
     }

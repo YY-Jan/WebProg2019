@@ -15,3 +15,20 @@ export const POSTS_SUBSCRIPTION = gql`
     }
   }
 `
+
+export const AUTHORS_SUBSCRIPTION = gql`
+  subscription {
+    user {
+      mutation
+      data {
+        id
+        name
+        posts {
+          id
+          title
+          body
+        }
+    }
+  }
+}
+`

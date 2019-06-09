@@ -12,11 +12,11 @@ import {
 } from 'reactstrap'
 
 import {
-  POSTS_QUERY,
   CREATE_POST_MUTATION,
-  POSTS_SUBSCRIPTION
+  AUTHORS_QUERY,
+  AUTHORS_SUBSCRIPTION,
 } from '../../graphql'
-import Post from '../../components/Post/Post'
+import AuthorPost from '../../components/AuthorPost'
 import classes from './App.module.css'
 
 let unsubscribe = null
@@ -24,28 +24,29 @@ let unsubscribe = null
 class App extends Component {
   state = {
     formTitle: '',
-    formBody: ''
+    formBody: '',
+    formAuthor: ''
   }
 
   handleFormSubmit = e => {
     e.preventDefault()
 
-    const { formTitle, formBody } = this.state
+    const { formTitle, formBody, formAuthor } = this.state
 
-    if (!formTitle || !formBody) return
+    if (!formTitle || !formBody || !formAuthor) return
 
     this.createPost({
       variables: {
         title: formTitle,
         body: formBody,
         published: true,
-        authorId: 2
+        authorId: formAuthor
       }
     })
 
     this.setState({
       formTitle: '',
-      formBody: ''
+      formBody: '',
     })
   }
 
@@ -65,6 +66,29 @@ class App extends Component {
 
                 return (
                   <Form onSubmit={this.handleFormSubmit}>
+                    <FormGroup row>
+                      <Label for="author" sm={2}>
+                        Author
+                      </Label>
+                      <Col sm={10}>
+                        <Query query={AUTHORS_QUERY}
+                          onCompleted={data => {
+                            this.setState(prev => ({formAuthor: prev.formAuthor === '' ? data.users[0].id: prev.formAuthor}));
+                          }}>
+                          {({ loading, error, data, subscribeToMore }) => {
+                            if (loading) return <p>Loading...</p>
+                              if (error) return <p>Error :(((</p>
+                              const posts = data.users.map((elem, id) => (
+                                <option value={elem.id} key={elem.id}>{elem.name}</option>
+                              ))
+                            return <Input type="select" name="author" id="author"
+                              onChange={e => this.setState({formAuthor: e.target.value})}>
+                              {posts}
+                            </Input>
+                          }}
+                        </Query>
+                      </Col>
+                    </FormGroup>
                     <FormGroup row>
                       <Label for="title" sm={2}>
                         Title
@@ -103,24 +127,24 @@ class App extends Component {
             </Mutation>
           </Col>
           <Col xs="6">
-            <Query query={POSTS_QUERY}>
+            <Query query={AUTHORS_QUERY}>
               {({ loading, error, data, subscribeToMore }) => {
                 if (loading) return <p>Loading...</p>
                 if (error) return <p>Error :(((</p>
 
-                const posts = data.posts.map((post, id) => (
-                  <Post data={post} key={id} />
+                const posts = data.users.map((post, id) => (
+                  <AuthorPost data={post} key={id} className={classes.post} />
                 ))
                 if (!unsubscribe)
                   unsubscribe = subscribeToMore({
-                    document: POSTS_SUBSCRIPTION,
+                    document: AUTHORS_SUBSCRIPTION,
                     updateQuery: (prev, { subscriptionData }) => {
                       if (!subscriptionData.data) return prev
-                      const newPost = subscriptionData.data.post.data
+                      const newPost = subscriptionData.data.user.data
 
                       return {
                         ...prev,
-                        posts: [newPost, ...prev.posts]
+                        posts: [newPost, ...prev.users]
                       }
                     }
                   })

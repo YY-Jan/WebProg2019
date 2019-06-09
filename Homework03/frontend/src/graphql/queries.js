@@ -12,3 +12,17 @@ export const POSTS_QUERY = gql`
     }
   }
 `
+
+export const AUTHORS_QUERY = gql`
+  query {
+    users {
+      id
+      name
+      posts {
+        id
+        title
+        body
+      }
+    }
+  }
+`
